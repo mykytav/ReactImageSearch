@@ -1,0 +1,31 @@
+body {
+  width: 80%;
+  margin: 2em auto 0 auto;
+}
+
+h1 span {
+  background: -webkit-linear-gradient(#af08f1, #2d48df);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.images {
+  column-count: 2;
+}
+
+img {
+  width: 100%;
+}
+
+button,
+label {
+  background: -webkit-linear-gradient(#af08f1, #2d48df);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 16px;
+}
+
+button:hover {
+  background: linear-gradient(to right, #af08f1, #2d48df);
+  -webkit-text-fill-color: #fff;
+}
