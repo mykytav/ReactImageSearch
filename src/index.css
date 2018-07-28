@@ -17,6 +17,10 @@ img {
   width: 100%;
 }
 
+img:hover {
+  cursor: pointer;
+}
+
 button,
 label {
   background: -webkit-linear-gradient(#af08f1, #2d48df);
@@ -28,4 +32,73 @@ label {
 button:hover {
   background: linear-gradient(to right, #af08f1, #2d48df);
   -webkit-text-fill-color: #fff;
+}
+
+.modal {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.17);
+  display: flex;
+  justify-content: center;
+  animation-name: modalFade;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes modalFade {
+  from {
+    transform: translateX(-75%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.modal img {
+  width: 100%;
+  height: 95%;
+  object-fit: contain;
+  flex: 1;
+}
+
+.modal span {
+  padding: 2px 4px;
+  font-weight: bold;
+  line-height: 20px;
+  font-size: 20px;
+  color: #fcc600;
+  border: 2px solid #fcc600;
+  border-radius: 5px;
+  transition: all 0.1s ease;
+}
+
+.modal span:hover {
+  cursor: pointer;
+  color: #fff;
+  border: 2px solid #ffffff;
+}
+
+.modal a {
+  color: #fcc600;
+  padding: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.2s ease-out;
+}
+
+.modal a:hover {
+  color: #ddd;
 }

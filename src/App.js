@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from './API';
+import Modal from './Modal';
 
 class App extends Component {
   constructor() {
@@ -8,7 +9,9 @@ class App extends Component {
       title: 'Unsplash Image Search',
       searchTerm: '',
       loading: false,
-      images: []
+      images: [],
+      showModal: false,
+      currentImageSrc: ''
     };
   }
 
@@ -27,6 +30,7 @@ class App extends Component {
     });
 
     API.search(this.state.searchTerm).then(images => {
+      console.log(images);
       this.setState({
         images,
         loading: false
@@ -35,6 +39,13 @@ class App extends Component {
 
     this.setState({
       searchTerm: ''
+    });
+  };
+
+  handleClick = e => {
+    this.setState({
+      showModal: true,
+      currentImageSrc: e.currentTarget.src
     });
   };
 
@@ -64,11 +75,30 @@ class App extends Component {
         <section className="images">
           {images.map(image => {
             return (
-              <img
-                alt={image.urls.small}
-                src={image.urls.small}
-                key={image.id}
-              />
+              <React.Fragment key={image.id}>
+                <img
+                  alt={image.urls.regular}
+                  src={image.urls.regular}
+                  onClick={this.handleClick}
+                />
+                {this.state.showModal && (
+                  <Modal>
+                    <div className="modal-top">
+                      <a
+                        href={this.state.currentImageSrc}
+                        download
+                        target="_blank"
+                      >
+                        Download Image
+                      </a>
+                      <span onClick={() => this.setState({ showModal: false })}>
+                        x
+                      </span>
+                    </div>
+                    <img src={this.state.currentImageSrc} />
+                  </Modal>
+                )}
+              </React.Fragment>
             );
           })}
         </section>
